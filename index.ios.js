@@ -4,7 +4,8 @@ import {
     Button,
     Text,
     View,
-    Image
+    Image,
+    StyleSheet
 } from 'react-native'; 
 
 
@@ -75,18 +76,34 @@ class jokepo extends Component {
 
     render() {
         return (
-           <View style={{ marginTop: 50 }}>
+           <View style={styles.background}>
            
             <Topo />
-            <View></View>
-            <View></View>
+            <View style={styles.painelAcoes}>
+
+                <View style={styles.btnEscolha}>
+                    <Button title="pedra" onPress={() => this.jokenpo('pedra')} />
+                </View>
+
+                <View>
+                    <Button title="papel" onPress={() => this.jokenpo('papel')} />
+                </View>
+
+                <View>
+                    <Button title="tesoura" onPress={() => this.jokenpo('tesoura')} />
+                </View>
+
+            </View>
+
+            <View style={styles.palco}>
+
+                <Text style={styles.txtResultado}>{this.state.resultado}</Text>
+
+                <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
+                <Text>Escolha do usuario: {this.state.escolhaUsuario}</Text>
+
+            </View>
             
-            <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
-            <Text>Escolha do usuario: {this.state.escolhaUsuario}</Text>
-            <Text>Resultado: {this.state.resultado}</Text>
-            <Button title="pedra" onPress={() => this.jokenpo('pedra')} />
-            <Button title="papel" onPress={() => this.jokenpo('papel')} />
-            <Button title="tesoura" onPress={() => this.jokenpo('tesoura')} />
            </View>
         );
     }
@@ -100,5 +117,28 @@ class Topo extends Component {
         </View>);
     }
 }
+
+const styles = StyleSheet.create({
+    background: {
+        marginTop: 50
+    },
+    btnEscolha: {
+        width: 90
+    },
+    painelAcoes: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    palco: {
+        alignItems: 'center',
+        marginTop: 10
+    },
+    txtResultado: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: 'red',
+        height: 60
+    }
+}); 
 
 AppRegistry.registerComponent('jokepo', () => jokepo);
