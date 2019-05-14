@@ -3,7 +3,8 @@ import {
     AppRegistry,
     Button,
     Text,
-    View
+    View,
+    Image
 } from 'react-native'; 
 
 
@@ -74,15 +75,29 @@ class jokepo extends Component {
 
     render() {
         return (
-           <View style={{ marginTop: 100 }}>
-                <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
-                <Text>Escolha do usuario: {this.state.escolhaUsuario}</Text>
-                <Text>Resultado: {this.state.resultado}</Text>
-                <Button title="pedra" onPress={() => this.jokenpo('pedra')} />
-                <Button title="papel" onPress={() => this.jokenpo('papel')} />
-                <Button title="tesoura" onPress={() => this.jokenpo('tesoura')} />
+           <View style={{ marginTop: 50 }}>
+           
+            <Topo />
+            <View></View>
+            <View></View>
+            
+            <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
+            <Text>Escolha do usuario: {this.state.escolhaUsuario}</Text>
+            <Text>Resultado: {this.state.resultado}</Text>
+            <Button title="pedra" onPress={() => this.jokenpo('pedra')} />
+            <Button title="papel" onPress={() => this.jokenpo('papel')} />
+            <Button title="tesoura" onPress={() => this.jokenpo('tesoura')} />
            </View>
         );
+    }
+}
+
+class Topo extends Component {
+    render() {
+        return (
+        <View>
+            <Image source={require('./imgs/jokenpo.png')} />
+        </View>);
     }
 }
 
