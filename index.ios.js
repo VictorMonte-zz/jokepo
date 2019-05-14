@@ -11,12 +11,12 @@ class jokepo extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { escolhaUsuario: '' };
+        this.state = { escolhaUsuario: '', escolhaComputador: '', resultado: '' };
     }
 
     jokenpo(escolhaUsuario) {
-        var numeroAleatorio = Math.floor(Math.random() * 3);
-        var escolhaComputador = '';
+        const numeroAleatorio = Math.floor(Math.random() * 3);
+        let escolhaComputador = '';
 
         switch (numeroAleatorio) {
             case 0: escolhaComputador = 'pedra'; break;
@@ -25,7 +25,51 @@ class jokepo extends Component {
             default: break;
         }
 
-        this.setState({ escolhaUsuario, escolhaComputador });
+        let resultado = '';
+
+        if (escolhaComputador === 'pedra') {
+            if (escolhaUsuario === 'pedra') {
+                resultado = 'Empate';
+            }
+
+            if (escolhaUsuario === 'papel') {
+                resultado = 'Usuario ganhou';
+            }
+
+            if (escolhaUsuario === 'tesoura') {
+                resultado = 'Computador ganhou';
+            }
+        }
+
+        if (escolhaComputador === 'papel') {
+            if (escolhaUsuario === 'papel') {
+                resultado = 'Empate';
+            }
+
+            if (escolhaUsuario === 'tesoura') {
+                resultado = 'Usuario ganhou';
+            }
+
+            if (escolhaUsuario === 'pedra') {
+                resultado = 'Computador ganhou';
+            }
+        }
+
+        if (escolhaComputador === 'tesoura') {
+            if (escolhaUsuario === 'tesoura') {
+                resultado = 'Empate';
+            }
+
+            if (escolhaUsuario === 'pedra') {
+                resultado = 'Usuario ganhou';
+            }
+
+            if (escolhaUsuario === 'papel') {
+                resultado = 'Computador ganhou';
+            }
+        }
+
+        this.setState({ escolhaUsuario, escolhaComputador, resultado });
     }
 
     render() {
@@ -33,7 +77,7 @@ class jokepo extends Component {
            <View style={{ marginTop: 100 }}>
                 <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
                 <Text>Escolha do usuario: {this.state.escolhaUsuario}</Text>
-                <Text>Resultado</Text>
+                <Text>Resultado: {this.state.resultado}</Text>
                 <Button title="pedra" onPress={() => this.jokenpo('pedra')} />
                 <Button title="papel" onPress={() => this.jokenpo('papel')} />
                 <Button title="tesoura" onPress={() => this.jokenpo('tesoura')} />
