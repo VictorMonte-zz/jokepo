@@ -1,5 +1,3 @@
-/* eslint-disable react/no-multi-comp */
-/* eslint-disable global-require */
 import React, { Component } from 'react';
 import {
     AppRegistry,
@@ -78,35 +76,35 @@ class jokepo extends Component {
 
     render() {
         return (
-           <View style={styles.background}>
-           
-            <Topo />
-            <View style={styles.painelAcoes}>
+            <View style={styles.background}>
 
-                <View style={styles.btnEscolha}>
-                    <Button title="pedra" onPress={() => this.jokenpo('pedra')} />
+                <Topo />
+                <View style={styles.painelAcoes}>
+
+                    <View style={styles.btnEscolha}>
+                        <Button title="pedra" onPress={() => this.jokenpo('pedra')} />
+                    </View>
+
+                    <View>
+                        <Button title="papel" onPress={() => this.jokenpo('papel')} />
+                    </View>
+
+                    <View>
+                        <Button title="tesoura" onPress={() => this.jokenpo('tesoura')} />
+                    </View>
+
                 </View>
 
-                <View>
-                    <Button title="papel" onPress={() => this.jokenpo('papel')} />
-                </View>
+                <View style={styles.palco}>
 
-                <View>
-                    <Button title="tesoura" onPress={() => this.jokenpo('tesoura')} />
+                    <Text style={styles.txtResultado}>{this.state.resultado}</Text>
+
+                    <Icone escolha={this.state.escolhaUsuario} jogador='Usuario' />
+                    <Icone escolha={this.state.escolhaComputador} jogador='Computador' />
+
                 </View>
 
             </View>
-
-            <View style={styles.palco}>
-
-                <Text style={styles.txtResultado}>{this.state.resultado}</Text>
-
-                <Icone escolha={this.state.escolhaUsuario} jogador='Usuario' />
-                <Icone escolha={this.state.escolhaComputador} jogador='Computador' />
-
-            </View>
-            
-           </View>
         );
     }
 }
