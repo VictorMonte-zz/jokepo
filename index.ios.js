@@ -1,13 +1,15 @@
+/* eslint-disable react/no-multi-comp */
+/* eslint-disable global-require */
 import React, { Component } from 'react';
 import {
     AppRegistry,
     Button,
     Text,
     View,
-    Image,
     StyleSheet
-} from 'react-native'; 
-
+} from 'react-native';
+import Topo from './src/components/topo';
+import Icone from './src/components/icone';
 
 class jokepo extends Component {
 
@@ -35,11 +37,11 @@ class jokepo extends Component {
             }
 
             if (escolhaUsuario === 'papel') {
-                resultado = 'Usuario ganhou';
+                resultado = 'Você ganhou';
             }
 
             if (escolhaUsuario === 'tesoura') {
-                resultado = 'Computador ganhou';
+                resultado = 'Você perdeu';
             }
         }
 
@@ -49,11 +51,11 @@ class jokepo extends Component {
             }
 
             if (escolhaUsuario === 'tesoura') {
-                resultado = 'Usuario ganhou';
+                resultado = 'Você ganhou';
             }
 
             if (escolhaUsuario === 'pedra') {
-                resultado = 'Computador ganhou';
+                resultado = 'Você perdeu';
             }
         }
 
@@ -63,11 +65,11 @@ class jokepo extends Component {
             }
 
             if (escolhaUsuario === 'pedra') {
-                resultado = 'Usuario ganhou';
+                resultado = 'Você ganhou';
             }
 
             if (escolhaUsuario === 'papel') {
-                resultado = 'Computador ganhou';
+                resultado = 'Você perdeu';
             }
         }
 
@@ -99,22 +101,13 @@ class jokepo extends Component {
 
                 <Text style={styles.txtResultado}>{this.state.resultado}</Text>
 
-                <Text>Escolha do computador: {this.state.escolhaComputador}</Text>
-                <Text>Escolha do usuario: {this.state.escolhaUsuario}</Text>
+                <Icone escolha={this.state.escolhaUsuario} jogador='Usuario' />
+                <Icone escolha={this.state.escolhaComputador} jogador='Computador' />
 
             </View>
             
            </View>
         );
-    }
-}
-
-class Topo extends Component {
-    render() {
-        return (
-        <View>
-            <Image source={require('./imgs/jokenpo.png')} />
-        </View>);
     }
 }
 
@@ -134,11 +127,11 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     txtResultado: {
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: 'bold',
         color: 'red',
         height: 60
     }
-}); 
+});
 
 AppRegistry.registerComponent('jokepo', () => jokepo);
