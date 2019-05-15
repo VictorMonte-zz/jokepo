@@ -6,6 +6,10 @@ import {
     StyleSheet
 } from 'react-native';
 
+const imagemPedra = require('../../imgs/pedra.png');
+const imagemPapel = require('../../imgs/papel.png');
+const imagemTesoura = require('../../imgs/tesoura.png');
+
 class Icone extends Component {
     render() {
         switch (this.props.escolha) {
@@ -13,21 +17,21 @@ class Icone extends Component {
                 return (
                     <View style={styles.icone}>
                         <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-                        <Image source={require('../../imgs/pedra.png')} />
+                        <Image source={imagemPedra} />
                     </View>
                 );
             case 'papel':
                 return (
                     <View style={styles.icone}>
                         <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-                        <Image source={require('../../imgs/papel.png')} />
+                        <Image source={imagemPapel} />
                     </View>
                 );
             case 'tesoura':
                 return (
                     <View style={styles.icone}>
                         <Text style={styles.txtJogador}>{this.props.jogador}</Text>
-                        <Image source={require('../../imgs/tesoura.png')} />
+                        <Image source={imagemTesoura} />
                     </View>
                 );
             default:
